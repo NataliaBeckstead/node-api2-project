@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
         },
         {
           title: 'I think we should get off the road. Get off the road! Quick!',
-          contents: 'Guess who said this',
+          contents: 'Guess who said this'
         },
         {
           title:
