@@ -52,4 +52,42 @@ router.get("/:id/comments", (req, res) => {
 		);
 });
 
+router.post("/", (req, res) => {
+    if (!req.body.title || !req.body.contents) {
+        res.status(400).json({ errorMessage: "Please provide title and contents." });
+    } else {
+        Posts.insert(req.body)
+        .then(() => {
+          res.status(201).json(req.body);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            messge: "Failed to save the post to the database",
+          });
+        })
+    }
+});
+
+router.post("/:id/comments", (req, res) => {
+    Posts.findById(req.params.id)
+        .then((post) => {
+            if (post) {
+                req.body.text
+                ? Posts.insertComment(req.body)
+                    .then(res.status(200).json(req.body))
+                    .catch((err) => {
+                        console.log(err);
+                    })
+                : res.status(400).json({ errorMessage: "Please provide text for the comment." });
+            } else {
+                res.status(404).json({ message: "Post not found" });
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json({ message: "Error processing request" });
+        });
+});
+
 module.exports = router;
