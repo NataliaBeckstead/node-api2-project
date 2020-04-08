@@ -8,10 +8,24 @@
     "server": "nodemon index.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "knex": "^0.20.11",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliaBeckstead/node-api2-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataliaBeckstead/node-api2-project/issues"
+  },
+  "homepage": "https://github.com/NataliaBeckstead/node-api2-project#readme"
 }
